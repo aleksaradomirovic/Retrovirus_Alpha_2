@@ -1,0 +1,23 @@
+//name
+//type [0 = crafting]
+//item image
+//
+//
+//
+//
+//
+//
+//
+Potato
+0
+Potato.png
+
+
+
+
+
+
+
+Soda
+0
+Soda.png
