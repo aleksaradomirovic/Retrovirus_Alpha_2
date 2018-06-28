@@ -20,13 +20,14 @@ public class Game extends JPanel implements ActionListener{
 	ArrayList<ContextMenu> menus = new ArrayList<ContextMenu>();
 	Timer general = new Timer(1000/120, this);
 	public static final int serverSize = 8;
-	public static Font classic = new Font("Arial", Font.PLAIN, 10);
+	public static Font classic = new Font("Arial", Font.PLAIN, 10), classic_bold = new Font("Arial", Font.BOLD, 10);
 	public Player[] serverPlayers = new Player[serverSize];
 	public Player local;
 	ItemData itemData = new ItemData("C:/Users/User/Desktop/Retrovirus_Data");
 	ItemManager globalItems;
 	long frameCount = 0, frameTime = System.currentTimeMillis();
 	float frameRate;
+	long tickTime;
 	
 	boolean pickup;
 	boolean inv = false, context = false;
@@ -49,18 +50,24 @@ public class Game extends JPanel implements ActionListener{
 		
 		itemData.reloadItemData();
 		local = new Player(this, itemData);
-		globalItems = new ItemManager(itemData, this);
-		
+		globalItems = new ItemManager(itemData, this);		
 		//start
 		keys = new KeyBoard(this);
 		frame.addKeyListener(keys);
 		frame.addMouseListener(keys);
+		tickTime = System.currentTimeMillis();
 		general.start();
 	}
 	
 	void update() {
 		pickup = false;
 		
+		if(System.currentTimeMillis() - tickTime > 10) {
+			for(int i = 0; i < (System.currentTimeMillis() - tickTime)/10; i++) {
+				tick();
+			}
+			tickTime = System.currentTimeMillis();
+		}
 		globalItems.update(local.x, local.y);
 		local.update();
 		runStatistics();
@@ -111,6 +118,12 @@ public class Game extends JPanel implements ActionListener{
 			frameRate = frameCount;
 			frameCount = 0;
 		}
+	}
+	
+	int time = 360;
+	void tick() {
+		local.inv.tick();
+		//System.out.println("Tick");
 	}
 	
 	void setFrameCap(int cap) {

@@ -1,0 +1,18 @@
+Consumables effect
+0-2 Food
+3-5 Water
+6-9 Immunity
+10-13 Health
+
+General Item Modifiers (Stats)
+0 Scrappable
+1 Canned (Spawns can after use)
+2 Bottled (Spawns bottle after use)
+3 Fireproof (Withstands fire)
+4 Waterproof (Can hold/withstand water)
+
+Scrap vars
+0-2 Steel
+3-5 Plastic
+6-8 Wood
+9-11 Aluminum

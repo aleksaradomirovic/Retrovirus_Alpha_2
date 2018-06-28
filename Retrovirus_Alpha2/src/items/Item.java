@@ -9,7 +9,7 @@ import game.Inventory;
 
 public class Item {
 	public boolean global = true;
-	String name;
+	String name, desc;
 	int type;
 	BufferedImage img;
 	int x, y;
@@ -22,8 +22,9 @@ public class Item {
 	public Item(int id, ItemData i, int x, int y, ContextMenu m, Inventory p) {
 		name = i.name(id);
 		type = i.type(id);
+		desc = i.description(id);
 		this.id = id;
-		System.out.println(name+", "+type);
+		System.out.println(name+", "+type+", "+desc);
 		img = i.getItemImage(id);
 		this.x = x;
 		this.y = y;

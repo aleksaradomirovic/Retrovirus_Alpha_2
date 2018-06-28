@@ -42,7 +42,7 @@ public class KeyBoard implements KeyListener, MouseListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(!console && !parent.context) {
+		if(!console && !parent.context && !parent.inv) {
 			System.out.println("Pressed"+e.getKeyChar());
 
 			if(e.getKeyChar() == 'w') {
@@ -78,8 +78,13 @@ public class KeyBoard implements KeyListener, MouseListener {
 		
 		//universal
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			parent.inv = false;
-			parent.closeAllContext();
+			if(parent.local.inv.context != null) {
+				parent.local.inv.context = null;
+			}
+			else {
+				parent.inv = false;
+				parent.closeAllContext();
+			}
 		}
 	}
 
@@ -95,19 +100,20 @@ public class KeyBoard implements KeyListener, MouseListener {
 			} if(e.getKeyChar() == 'd') {
 				right = false;
 			} if(e.getKeyChar() == 'g') {
-				if(parent.inv)
+				if(parent.inv) {
 					parent.inv = false;
-				else
+					parent.local.inv.context = null;
+				} else
 					parent.inv = true;
 				System.out.println(parent.inv);
 			}
 			if(parent.inv) {
-				if(e.getKeyChar() == 'e') {
+				if(e.getKeyChar() == 'q') {
 					if(parent.local.inv.tab < 2)
 						parent.local.inv.tab++;
 					else
 						parent.local.inv.tab = 0;
-				} if(e.getKeyChar() == 'q') {
+				} if(e.getKeyChar() == 'e') {
 					if(parent.local.inv.tab > 0)
 						parent.local.inv.tab--;
 					else
@@ -183,6 +189,15 @@ public class KeyBoard implements KeyListener, MouseListener {
 				} catch (NumberFormatException e) {
 					System.err.println("Bad number input");
 				}
+			}
+		}
+		if(command.length() > 6 && command.substring(0, 7).equals("settime")) {
+			try {
+				parent.local.inv.minutesAfterMidnight = Integer.parseInt(command.substring(8,command.length()));
+				writeLine("Updated time");
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				System.err.println("Bad number input");
 			}
 		}
 	}

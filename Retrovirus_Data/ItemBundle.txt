@@ -1,23 +1,50 @@
 //name
-//type [0 = crafting]
+//type [0 = crafting] [1 = status]
 //item image
+//description
+//stats
 //
 //
 //
-//
-//
-//
-//
+//scrap values
+//type-bound vars
 Potato
-0
+1
 Potato.png
+Starchy tuber. Considered a holy object by many.
 
 
 
 
 
-
-
+500400-0500000
 Soda
-0
+1
 Soda.png
+Sweetened carbonic acid.
+
+
+
+
+
+00050000000000
+Antibiotics
+1
+Medicine1.png
+Unrecognizable pills and  tablets.
+
+
+
+
+
+00000010000500
+Medkit
+1
+Medicine2.png
+Emergency field box of    assorted sutures and      medicines.
+
+
+
+
+
+00000005003000

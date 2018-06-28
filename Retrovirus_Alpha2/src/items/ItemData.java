@@ -63,13 +63,27 @@ public class ItemData {
 	public int type(int id) {
 		return Integer.parseInt(data[(id+1)*10+1]);
 	}
+	public String description(int id) {
+		return data[(id+1)*10+3];
+	}
+	public String getBoundVars(int id) {
+		return data[(id+1)*10+9];
+	}
+	public int[] parseConsumableVars(int id) {
+		int[] r = new int[4];
+		r[0] = Integer.parseInt(getBoundVars(id).substring(0, 3));
+		r[1] = Integer.parseInt(getBoundVars(id).substring(3, 6));
+		r[2] = Integer.parseInt(getBoundVars(id).substring(6, 10));
+		r[3] = Integer.parseInt(getBoundVars(id).substring(10, 14));
+		return r;
+	}
 	
 	public BufferedImage getItemImage(int id) {
 		try {
 			return ImageIO.read(new File(installLocation+"/Images/"+data[(id+1)*10+2]));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("NO TEXTURE FOUND");
 			return noTexture;
 		}
 	}

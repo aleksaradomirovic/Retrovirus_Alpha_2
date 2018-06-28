@@ -13,9 +13,11 @@ public class Player {
 	Rectangle interactBox = new Rectangle();
 	Inventory inv;
 	
+	int hp = 5000, immune = 4500, food = 20000, water = 5000;
+	
 	public Player(Game p, ItemData i) {
 		parent = p;
-		inv = new Inventory(i);
+		inv = new Inventory(i,this);
 	}
 	
 	void update() {
@@ -30,6 +32,15 @@ public class Player {
 		}
 		//System.out.println("XY: "+x+ " "+y);
 		interactBox.setBounds(250, 150, 300, 300);
+		
+		if(hp > 5000)
+			hp = 5000;
+		if(immune > 5000)
+			immune = 5000;
+		if(food > 20000)
+			food = 20000;
+		if(water > 5000)
+			water = 5000;
 	}
 	void draw(Graphics g) {
 		g.drawRect(390, 275, 20, 50);

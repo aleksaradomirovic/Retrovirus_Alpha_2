@@ -23,8 +23,8 @@ public class ItemManager {
 		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 0);
 		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 0);
 		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 0);
-		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 0);
-		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 0);
+		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 3);
+		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 2);
 		spawnItem(new Random().nextInt(800)-400, new Random().nextInt(600)-300, 1);
 	}
 	
